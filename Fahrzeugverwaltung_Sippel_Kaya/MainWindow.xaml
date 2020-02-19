@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fahrzeugverwaltung_Sippel_Kaya"
         mc:Ignorable="d"
-        Title="MainWindow" d:DesignWidth="961.763" d:DesignHeight="605.624">
+        Title="Fahrzeugverwaltung" d:DesignWidth="961.763" d:DesignHeight="605.624">
 
     <Grid HorizontalAlignment="Left" Width="954">
 
-      
-        
-        <DataGrid Name="DG1" ItemsSource="{Binding}" AutoGenerateColumns="False" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="428" Margin="29,28,0,0" Grid.Row="4" VerticalAlignment="Top" Width="612" SelectionChanged="DG1_SelectionChanged">
+
+
+        <DataGrid Name="DG1" ItemsSource="{Binding}" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="555" Margin="139,10,0,0" Grid.Row="4" VerticalAlignment="Top" Width="434" SelectionChanged="DG1_SelectionChanged" Grid.Column="1">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Hersteller" Binding="{Binding Hersteller}" />
@@ -19,11 +19,18 @@
                 <DataGridTextColumn Header="Erstzulassung"  Binding="{Binding Erstzulassung}" />
                 <DataGridTextColumn Header="Kennzeichen"  Binding="{Binding Kennzeichen}"/>
                 <DataGridTextColumn Header="Anschaffungspreis" Binding="{Binding Anschaffungspreis}" />
-               
-                
+
+
             </DataGrid.Columns>
 
         </DataGrid>
+        <TextBox x:Name="kennzeichenEingabe" HorizontalAlignment="Left" Height="24" Margin="0,44,0,0" Grid.Row="4" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5" FontSize="16" Grid.Column="1" TextChanged="KennzeichenEingabe_TextChanged" KeyDown="OnKeyDownHandler"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="34" Grid.ColumnSpan="2" FontSize="16"><Run Text="Fahrzeug suchen:"/><LineBreak/><Run/></TextBlock>
+        <Button Content="Suchen" HorizontalAlignment="Left" Margin="10,73,0,0" Grid.Row="4" VerticalAlignment="Top" Width="245" Click="Button_Click_1" Grid.ColumnSpan="2" FontSize="16"/>
+        <Label Content="Kennzeichen" HorizontalAlignment="Left" Margin="10,37,0,0" Grid.Row="4" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="fahrzeugDaten" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="260" Margin="10,114,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" FontSize="16" TextChanged="FahrzeugDaten_TextChanged"/>
+        <Label Content="Steuerschuld Gesamt" Grid.Column="1" HorizontalAlignment="Left" Margin="641,26,0,0" Grid.Row="4" VerticalAlignment="Top"/>
+        <Label Content="&#xD;&#xA;" Grid.Column="1" HorizontalAlignment="Left" Margin="641,57,0,0" Grid.Row="4" VerticalAlignment="Top" Width="121" Height="24"/>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15*"/>

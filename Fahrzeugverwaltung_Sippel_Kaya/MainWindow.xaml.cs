@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using Fahrzeugverwaltung_Sippel_Kaya.Properties;
 using System.Globalization;
 
 namespace Fahrzeugverwaltung_Sippel_Kaya
@@ -26,22 +25,24 @@ namespace Fahrzeugverwaltung_Sippel_Kaya
     /// 
 
 
-    public class EnumConverter : IValueConverter
-    {
+    /*  public class enumconverter : ivalueconverter
+      {
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return ((Enum)value).ToString();
-        }
-
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return null;
-        }
+          public object convert(object value, type targettype, object parameter, cultureinfo culture)
+          {
+              return ((enum)value).tostring();
+          }
 
 
-    }
+          public object convertback(object value, type targettype, object parameter, cultureinfo culture)
+          {
+              return null;
+          }
+
+          <DataGridComboBoxColumn Header="Schadtstoffklasse" SelectedItemBinding="{Binding Schadstoffklasse}" ItemsSource="{Binding Source={StaticResource ResourceKey= EnumConverter}}" />
+
+
+      }*/
 
     public partial class MainWindow : Window
     {
@@ -64,7 +65,7 @@ namespace Fahrzeugverwaltung_Sippel_Kaya
         private ObservableCollection<Fahrzeugverwaltung.Fahrzeug> GetData()
         {
             ObservableCollection<Fahrzeugverwaltung.Fahrzeug> fahrzeuge = new ObservableCollection<Fahrzeugverwaltung.Fahrzeug>();
-            Fahrzeugverwaltung.Fahrzeug a = new Fahrzeugverwaltung.Fahrzeug("BMW", "3", "K-LS-131", 42000, 1924);
+            Fahrzeugverwaltung.PKW a = new Fahrzeugverwaltung.PKW("BMW", "3", "K-LS-131", 42000, 1924, 3000, 245, Fahrzeugverwaltung.Schadstoffklasse.Normal);
             Fahrzeugverwaltung.PKW pkw = new Fahrzeugverwaltung.PKW("VW", "Golf", "K-LS-32", 45000, 2019, 3000, 245, Fahrzeugverwaltung.Schadstoffklasse.Normal);
             Fahrzeugverwaltung.Program.fahrzeuge.Add(pkw);
             Fahrzeugverwaltung.Program.fahrzeuge.Add(a);
@@ -92,6 +93,46 @@ namespace Fahrzeugverwaltung_Sippel_Kaya
         }
 
         private void DG1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Fahrzeugverwaltung.Fahrzeug f = (Fahrzeugverwaltung.Fahrzeug)DG1.SelectedItem;
+            kennzeichenEingabe.Text = f.Kennzeichen;
+            fahrzeugDatenAnzeigen();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                fahrzeugDatenAnzeigen();
+
+            }
+        }
+
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            fahrzeugDatenAnzeigen();
+        }
+
+        private void fahrzeugDatenAnzeigen()
+        {
+            fahrzeugDaten.Text = Fahrzeugverwaltung.Program.ausgabeFahrzeugDaten(kennzeichenEingabe.Text) + "Steuerschuld: "+  Fahrzeugverwaltung.Program.steuerschuldAusgabe(kennzeichenEingabe.Text) + "€";
+
+
+        }
+
+        private void FahrzeugDaten_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void KennzeichenEingabe_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
