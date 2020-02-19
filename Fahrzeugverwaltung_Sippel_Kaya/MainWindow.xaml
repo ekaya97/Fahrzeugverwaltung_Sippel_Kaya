@@ -1,0 +1,43 @@
+﻿<Window x:Class="Fahrzeugverwaltung_Sippel_Kaya.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fahrzeugverwaltung_Sippel_Kaya"
+        mc:Ignorable="d"
+        Title="MainWindow" d:DesignWidth="961.763" d:DesignHeight="605.624">
+
+    <Grid HorizontalAlignment="Left" Width="954">
+
+      
+        
+        <DataGrid Name="DG1" ItemsSource="{Binding}" AutoGenerateColumns="False" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="428" Margin="29,28,0,0" Grid.Row="4" VerticalAlignment="Top" Width="612" SelectionChanged="DG1_SelectionChanged">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Hersteller" Binding="{Binding Hersteller}" />
+                <DataGridTextColumn Header="Modell" Binding="{Binding Modell}"  />
+                <DataGridTextColumn Header="Erstzulassung"  Binding="{Binding Erstzulassung}" />
+                <DataGridTextColumn Header="Kennzeichen"  Binding="{Binding Kennzeichen}"/>
+                <DataGridTextColumn Header="Anschaffungspreis" Binding="{Binding Anschaffungspreis}" />
+               
+                
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="91*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+    </Grid>
+
+</Window>
